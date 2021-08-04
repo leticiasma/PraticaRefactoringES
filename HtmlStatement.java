@@ -3,7 +3,7 @@ import java.util.Enumeration;
 public class HtmlStatement extends Statement {
 
 
-  private String firstResult(Customer aCustomer){
+  protected String firstResult(Customer aCustomer){
     Enumeration rentals = aCustomer.getRentals();
     String result = "<H1>Rentals for <EM>" + aCustomer.getName() +
     "</EM></H1><P>\n";
@@ -22,7 +22,7 @@ public class HtmlStatement extends Statement {
     return result;
   }
 
-  private String addFooterLines(String result, Customer aCustomer){
+  protected String addFooterLines(String result, Customer aCustomer){
       result += "<P>You owe <EM>" +
       String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
       result += "On this rental you earned <EM>" + 
@@ -31,12 +31,5 @@ public class HtmlStatement extends Statement {
 
       return result;
   }
-
-   public String value(Customer aCustomer) {
-    String result = firstResult(aCustomer);
-    result = addFooterLines(result, aCustomer);
-
-    return result;
-   }
 
 }

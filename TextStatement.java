@@ -2,7 +2,7 @@ import java.util.Enumeration;
 
 public class TextStatement extends Statement {
 
-  private String addFooterLines(String result, Customer aCustomer){
+  protected String addFooterLines(String result, Customer aCustomer){
       result += "Amount owed is " +
       String.valueOf(aCustomer.getTotalCharge()) + "\n";
       result += "You earned " +
@@ -19,7 +19,7 @@ public class TextStatement extends Statement {
     return result;
   }
 
-  private String firstResult(Customer aCustomer){
+  protected String firstResult(Customer aCustomer){
     Enumeration rentals = aCustomer.getRentals();
     String result = "Rental Record for " + aCustomer.getName() +
     "\n";
@@ -31,10 +31,4 @@ public class TextStatement extends Statement {
     return result;  
   }
 
-   public String value(Customer aCustomer) {
-      String result = firstResult(aCustomer);
-      result = addFooterLines(result, aCustomer);
-
-      return result;
-   }
 }
